@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import "./styles/Todo.css"
+import TodoItems from './TodoItems'
 
 let count = 0
 
@@ -23,7 +24,11 @@ const Todo = () => {
             <input ref={inputRef} type="text" placeholder="Add Your Task" className="todo-input" />
             <div onClick={() => {add()}} className="todo-add-btn">ADD</div>
         </div>
-        <div className="todo-list"></div>
+        <div className="todo-list">
+            {todos.map((item, index) => {
+                return <TodoItems key={index} no={item.no} display={item.display} text={item.text} />
+            })}
+        </div>
     </div>
   )
 }
